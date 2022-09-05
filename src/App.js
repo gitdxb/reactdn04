@@ -1,23 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
+import CardRCC from './components/CardRCC/CardRCC';
+import CardRFC from './components/CardRFC/CardRFC';
+
+
+// App là component chính của ứng dụng
+// chứa các thành phần component con
 
 function App() {
   return (
+    // chỉ được có 1 thẻ bao bên ngoài
+    // thẻ jsx
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* component */}
+      <CardRCC></CardRCC>
+      <CardRCC/>
+      <CardRFC/>
     </div>
   );
 }
