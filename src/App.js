@@ -1,21 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
-import CardRCC from './components/CardRCC/CardRCC';
-import CardRFC from './components/CardRFC/CardRFC';
-
-
-// App là component chính của ứng dụng
-// chứa các thành phần component con
+import "./App.css";
+import CardRCC from "./components/CardRCC/CardRCC";
+import HomeComponent from "./components/BTComponent/HomeComponent/HomeComponent";
+import DataBinding from "./components/DataBinding/DataBinding";
+import HandleEvent from "./components/HandleEvent/HandleEvent";
+import DemoState from "./DemoState/DemoState";
 
 function App() {
   return (
-    // chỉ được có 1 thẻ bao bên ngoài
-    // thẻ jsx
     <div className="App">
+      <DemoState/>
+      {/* <HandleEvent /> */}
+      {/* <DataBinding/> */}
       {/* component */}
-      <CardRCC></CardRCC>
-      <CardRCC/>
-      <CardRFC/>
+      {/* <HomeComponent/> */}
     </div>
   );
 }
