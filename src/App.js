@@ -8,11 +8,17 @@ import TangGiamFont from "./DemoState/TangGiamFont";
 import DemoStyling from "./DemoState/DemoStyling";
 import DoiMauXe from "./DemoState/DoiMauXe/DoiMauXe";
 import DemoArray from "./components/DemoArray/DemoArray";
+import DemoProps from "./DemoProps/DemoProps";
+import ShoeShop from "./DemoProps/ShoeShop/ShoeShop";
+import BTXemChiTiet from "./components/BTXemChiTiet/BTXemChiTiet";
 
 function App() {
   return (
     <div className="App">
-      <DemoArray/>
+      <BTXemChiTiet/>
+      {/* <ShoeShop/> */}
+      {/* <DemoProps/> */}
+      {/* <DemoArray/> */}
       {/* <DoiMauXe/> */}
       {/* <TangGiamFont/> */}
       {/* <p className="demoCSS">DemoCSS</p>
