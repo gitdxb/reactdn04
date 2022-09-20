@@ -75,32 +75,7 @@ export default class BTXemChiTiet extends Component {
     return (
       <div className="container py-5">
         {/* <div className="row">{this.renderPhoneList()}</div> */}
-        <DanhSachSP phoneList={this.phoneList} />
-        {/* <div className="row">
-          <div className="col-4">
-            <h3>{chiTietPhone.tenSP}</h3>
-            <img className="img-fluid" src={chiTietPhone.hinhAnh} alt="" />
-          </div>
-          <div className="col-8">
-            <table className="table">
-              <thead>
-                <tr>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Màn hình</td>
-                  <td>{chiTietPhone.manHinh}</td>
-                </tr>
-                <tr>
-                  <td>HĐH</td>
-                  <td>{chiTietPhone.heDieuHanh}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div> */}
+        <DanhSachSP showDetail={this.showDetail} phoneList={this.phoneList} />
         <BangCT chiTietPhone={chiTietPhone} />
       </div>
     );

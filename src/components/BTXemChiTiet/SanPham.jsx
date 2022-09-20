@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 export default class SanPham extends Component {
   render() {
-    let {phone} = this.props;
+    let {phone, showDetail} = this.props;
     return (
       <div className="card">
         <img className="card-img-top" src={phone.hinhAnh} alt="" />
@@ -11,7 +11,7 @@ export default class SanPham extends Component {
           <p className="card-text">{phone.giaBan}</p>
           <button
             onClick={() => {
-              //this.showDetail(phone);
+              showDetail(phone);
             }}
             className="btn btn-success"
           >

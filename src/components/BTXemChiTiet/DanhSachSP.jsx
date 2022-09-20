@@ -8,7 +8,7 @@ export default class DanhSachSP extends Component {
 
       return (
         <div className="col-4" key={`phone-${phone.maSP}`}>
-          <SanPham phone={phone}/>
+          <SanPham showDetail={this.props.showDetail} phone={phone}/>
         </div>
       );
     });
