@@ -10,7 +10,7 @@ export default class DemoProps extends Component {
         url:"https://source.unsplash.com/random/?iphone"
     }
   render() {
-    let {id, name, price,url} = this.productObj;
+    let {name, price,url} = this.productObj;
     return (
       <div className="container">
         <div className="row">
