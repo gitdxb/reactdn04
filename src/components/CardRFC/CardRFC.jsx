@@ -1,4 +1,4 @@
-// `rfc` tạo nhanh cú pháp cho func component
+// rfc
 import React from 'react'
 
 export default function CardRFC() {

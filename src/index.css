@@ -1,27 +1,27 @@
-.home {
+.home{
     background-color: black;
     color: green;
 }
-header {
+header{
     background-color: blue;
     color: white;
     height: 100px;
 }
 
-footer {
+footer{
     background-color: blueviolet;
     color: white;
     height: 100px;
 }
 
-.content {
+.content{
     background-color: aquamarine;
     color: white;
-    height: 600px;
+    height: 500px;
 }
 
-.navi {
+.navi{
     background-color: green;
     color: white;
-    height: 600px;
+    height: 500px;
 }

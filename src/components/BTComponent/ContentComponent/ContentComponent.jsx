@@ -1,6 +1,6 @@
 // rcc
-import React, { Component } from "react";
-import CardRCC from "../../CardRCC/CardRCC";
+import React, { Component } from 'react'
+import CardRCC from '../../CardRCC/CardRCC'
 
 export default class ContentComponent extends Component {
   render() {
@@ -14,6 +14,6 @@ export default class ContentComponent extends Component {
           <CardRCC />
         </div>
       </div>
-    );
+    )
   }
 }

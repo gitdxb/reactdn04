@@ -1,0 +1,7 @@
+
+.bgGame{
+    /* đường dẫn trong phạm vi của src */
+    background-image: url(../asset/img/bgGame.png);
+    
+    height: 100vh;
+}
