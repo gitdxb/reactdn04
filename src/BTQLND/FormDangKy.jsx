@@ -42,11 +42,19 @@ class FormDangKy extends Component {
         //obj.tenthuoctinh, obj[tenthuoctinh]
         newErrors[name] = errorMsg
 
+        // Kiểm tra email
+        // lấy giá trị của typeInput
+        let typeVal = event.target.getAttribute("typeInput")
+        if (typeVal == "email") {
+            // kiểm tra email
+        }
+
         this.setState({
             values: newValues,
             errors: newErrors
         })
     }
+
     render() {
         return (
             <form>
@@ -78,7 +86,7 @@ class FormDangKy extends Component {
                     <div className="col-6 mb-5">
                         <input onChange={(event) => {
                             this.inputChange(event)
-                        }} type="text" name='email' className="form-control" placeholder="Email" />
+                        }} typeInput="email" type="text" name='email' className="form-control" placeholder="Email" />
                         <p className='text-danger'>{this.state.errors.email}</p>
                     </div>
                     <div className="col-6 mb-5">

@@ -3,6 +3,7 @@ import { combineReducers, createStore } from "redux";
 
 import { gioHangReducer } from "./reducer/gioHangReducer";
 import { gameReducer } from "./reducer/gameReducer";
+import { QLNDReducer } from "./reducer/QLNDReducer";
 //state ở RCC là đối tượng
 // state = {
 //     giohang: []
@@ -41,7 +42,8 @@ const rootReducer = combineReducers({
     // Object literal
     // gioHangReducer: gioHangReducer
     gioHangReducer,
-    gameReducer
+    gameReducer,
+    QLNDReducer
 
     // Code cũ ở dưới, trước khi phân file
     // gioHangReducer: (state = giohang, action) => {
