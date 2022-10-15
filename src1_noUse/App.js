@@ -11,10 +11,12 @@ import DemoArray from "./components/DemoArray/DemoArray";
 import DemoProps from "./DemoProps/DemoProps";
 import ShoeShop from "./DemoProps/ShoeShop/ShoeShop";
 import BTXemChiTiet from "./components/BTXemChiTiet/BTXemChiTiet";
+import GameTaiXiu from "./GameTaiXiu/GameTaiXiu";
 
 function App() {
   return (
     <div className="App">
+      {/* <GameTaiXiu/> */}
       <BTXemChiTiet/>
       {/* <ShoeShop/> */}
       {/* <DemoProps/> */}

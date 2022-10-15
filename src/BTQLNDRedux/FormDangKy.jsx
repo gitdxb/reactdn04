@@ -1,39 +1,20 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-// C1: lưu giá trị từ form ở state của component
+
 // C2: lưu giá trị từ form ở redux
 
 class FormDangKy extends Component {
 
-    // chứa các giá trị từ form, chứa nội dung error
-    state = {
-        values: {
-            taiKhoan: '',
-            hoTen: '',
-            matKhau: '',
-            sdt: '',
-            email: '',
-            maLoaiND: 'khachHang'
-        },
-        errors: {
-            taiKhoan: '',
-            hoTen: '',
-            matKhau: '',
-            sdt: '',
-            email: '',
-            maLoaiND: ''
-        }
-    }
-    
+
 
     inputChange = (event) => {
         let { value, name } = event.target
         // obj literal
-        let newValues = {...this.state.values,[name]:value}
+        let newValues = { ...this.props.nguoiDung.values, [name]: value }
         console.log(newValues);
 
-        let newErrors = {...this.state.errors}
+        let newErrors = { ...this.props.nguoiDung.errors }
         let errorMsg = "";
         if (value.trim() == "") {
             // lỗi
@@ -42,61 +23,65 @@ class FormDangKy extends Component {
         //obj.tenthuoctinh, obj[tenthuoctinh]
         newErrors[name] = errorMsg
 
-        
+        // đẩy giá trị từ form, và thông báo lỗi về redux
+        let action = {
+            type: "HANDLE_CHANGE",
+            nguoiDung: {
+                values: newValues,
+                errors: newErrors
+            }
+        }
+        this.props.dispatch(action);
+
         // lấy giá trị của typeInput, rồi mới kiểm tra được xem có đúng ko
         let typeVal = event.target.getAttribute("typeInput");
         if (typeVal == "email") {
             // kiểm tra email
             let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 
-            if(!regex.test(value)) {
+            if (!regex.test(value)) {
                 // không hợp lệ
                 errorMsg = "Email không đúng định dạng!";
             }
         }
-
-        this.setState({
-            values: newValues,
-            errors: newErrors
-        })
     }
 
     handleSubmit = (event) => {
         event.preventDefault()
         let isValid = true;
         // kiểm tra các dữ liệu đã hợp lệ (các lỗi còn không)
-        for (const key in this.state.errors) {
-            if(this.state.errors[key] !== ""){
+        for (const key in this.props.nguoiDung.errors) {
+            if (this.props.nguoiDung.errors[key] !== "") {
                 // còn lỗi
                 isValid = false;
                 break;
             }
         }
         // kiểm tra dữ liệu rỗng khi không change value
-        for (const key in this.state.values) {
-            if(this.state.values[key] !== ""){
+        for (const key in this.props.nguoiDung.values) {
+            if (this.props.nguoiDung.values[key] !== "") {
                 // giá trị bị rỗng
                 isValid = false;
                 break;
             }
         }
-        if(!isValid) {
+        if (!isValid) {
             // ko hợp lệ thì thông báo
             alert('Dữ liệu không hợp lệ!');
             // dừng hàm
             return;
         }
-        
+
         // đẩy dữ liệu người dùng lên redux
         let action = {
             type: "THEM_ND",
-            nguoiDung: this.state.values
+            nguoiDung: this.props.nguoiDung.values
         }
         this.props.dispatch(action)
     }
     render() {
         console.log(this.props);
-        let {taiKhoan, hoTen} = this.props.nguoiDungChiTiet;
+        let { taiKhoan, hoTen, matKhau, sdt, email, maLoaiND } = this.props.nguoiDung.values;
         return (
             <form onSubmit={(event) => {
                 this.handleSubmit(event);
@@ -106,37 +91,38 @@ class FormDangKy extends Component {
                         <input onChange={(event) => {
                             this.inputChange(event)
                         }} value={taiKhoan} type="text" name='taiKhoan' className="form-control" placeholder="Tài khoản" />
-                        <p className='text-danger'>{this.state.errors.taiKhoan}</p>
+                        <p className='text-danger'>{this.props.nguoiDung.errors.taiKhoan}</p>
                     </div>
                     <div className="col-6 mb-5">
                         <input onChange={(event) => {
                             this.inputChange(event)
                         }} value={hoTen} type="text" name='hoTen' className="form-control" placeholder="Họ Tên" />
-                        <p className='text-danger'>{this.state.errors.hoTen}</p>
+                        <p className='text-danger'>{this.props.nguoiDung.errors.hoTen}</p>
                     </div>
                     <div className="col-6 mb-5">
                         <input onChange={(event) => {
                             this.inputChange(event)
-                        }} type="password" name='matKhau' className="form-control" placeholder="Mật Khẩu" />
-                        <p className='text-danger'>{this.state.errors.matKhau}</p>
+                        }} value={matKhau} type="password" name='matKhau' className="form-control" placeholder="Mật Khẩu" />
+                        <p className='text-danger'>{this.props.nguoiDung.errors.matKhau}</p>
                     </div>
                     <div className="col-6 mb-5">
                         <input onChange={(event) => {
                             this.inputChange(event)
-                        }} type="text" name='sdt' className="form-control" placeholder="Điện thoại" />
-                        <p className='text-danger'>{this.state.errors.sdt}</p>
+                        }} value={sdt} type="text" name='sdt' className="form-control" placeholder="Điện thoại" />
+                        <p className='text-danger'>{this.props.nguoiDung.errors.sdt}</p>
                     </div>
                     <div className="col-6 mb-5">
                         <input onChange={(event) => {
                             this.inputChange(event)
-                        }} typeinput="email" type="text" name='email' className="form-control" placeholder="Email" />
-                        <p className='text-danger'>{this.state.errors.email}</p>
+                        }} value={email} typeinput="email" type="text" name='email' className="form-control" placeholder="Email" />
+                        <p className='text-danger'>{this.props.nguoiDung.errors.email}</p>
                     </div>
                     <div className="col-6 mb-5">
-                        <select className='form-control' name="" id="">
+                        <select value={maLoaiND} className='form-control' name="" id="">
                             <option value="khachHang">Khách hàng</option>
                             <option value="quanTri">Quản trị</option>
                         </select>
+                        <p className='text-danger'>{this.props.nguoiDung.errors.maLoaiND}</p>
                     </div>
                     <div className="col-12 text-center">
                         <button className='btn btn-success mr-1'>Đăng ký</button>
@@ -151,7 +137,7 @@ class FormDangKy extends Component {
 
 const mapStateToProps = (rootReducer) => {
     return {
-        nguoiDungChiTiet: rootReducer.QLNDReducer.nguoiDungChiTiet
+        nguoiDung: rootReducer.QLNDReducer.nguoiDung
     }
 }
 

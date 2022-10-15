@@ -14,9 +14,10 @@ import DemoProps from './DemoProps/DemoProps';
 import ShoesShop from './DemoProps/ShoesShop/ShoesShop';
 import BTXemChiTiet from './BTXemChiTiet/BTXemChiTiet';
 import BTGioHang from './BTGioHang/BTGioHang';
+import BTQLNDRedux from './BTQLNDRedux/BTQLNDRedux';
 // import BTGioHangRedux from './BTGioHangRedux/BTGioHangRedux';
 // import GameTaiXiu from './GameTaiXiu/GameTaiXiu';
-import BTQLND from './BTQLND/BTQLND';
+// import BTQLND from './BTQLND/BTQLND';
 
 //App là component chính của ứng dụng
 //chứa các thành phần component con
@@ -25,14 +26,14 @@ function App() {
     //chỉ được có 1 thẻ bao bên ngoài
     //thẻ jsx
     <div className="App">
-
-      <BTQLND/>
+      <BTQLNDRedux/>
+      {/* <BTQLND/> */}
       {/* <GameTaiXiu/> */}
 
-    {/* <BTGioHangRedux/> */}
+      {/* <BTGioHangRedux/> */}
 
-    {/* <BTGioHang/> */}
-   
+      {/* <BTGioHang/> */}
+
     </div>
   );
 }

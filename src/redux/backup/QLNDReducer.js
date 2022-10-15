@@ -5,35 +5,18 @@ const initialState = {
     { taiKhoan: 'user2', hoTen: 'Nguyen Thi Khach Hang', matKhau: '12345', sdt: '090000000', email: 'email1@gmail.com', maLoaiND: 'khachHang' },
     { taiKhoan: 'user3', hoTen: 'Nguyen Thi Khach Hang', matKhau: '12345', sdt: '090000000', email: 'email1@gmail.com', maLoaiND: 'khachHang' },
   ],
-  nguoiDung: {
-    values: {
-      taiKhoan: '',
-      hoTen: '',
-      matKhau: '',
-      sdt: '',
-      email: '',
-      maLoaiND: 'khachHang'
-    },
-    errors: {
-      taiKhoan: '',
-      hoTen: '',
-      matKhau: '',
-      sdt: '',
-      email: '',
-      maLoaiND: ''
-    }
+  nguoiDungChiTiet: {
+    taiKhoan: 'user3', 
+    hoTen: 'người dùng 3', 
+    matKhau: '123456789', 
+    sdt: '09000XXXX', 
+    email: 'email4@gmail.com', 
+    maLoaiND: 'quanTri' 
   }
 }
 
 export const QLNDReducer = (state = initialState, action) => {
   switch (action.type) {
-
-    case "HANDLE_CHANGE":
-      console.log(action.nguoiDung);
-      state.nguoiDung = action.nguoiDung;
-
-      return { ...state }
-
 
     case "THEM_ND":
       console.log(action.nguoiDung);
@@ -54,10 +37,10 @@ export const QLNDReducer = (state = initialState, action) => {
       })
       return { ...state }
 
-    case "XEM_CT":
-      console.log(action.ndChiTiet);
-      state.nguoiDungChiTiet = action.ndChiTiet;
-      return { ...state }
+      case "XEM_CT":
+        console.log(action.ndChiTiet);
+        state.nguoiDungChiTiet = action.ndChiTiet;
+      return {...state}
     default:
       return state
   }
