@@ -45,15 +45,15 @@ export const gioHangReducer = (state = giohang, action) => {
 
         case "DOI_SO_LUONG":
             console.log(action);
-            let spFindDoi = state.find((sp) => { 
+            let spFindDoi = state.find((sp) => {
                 return sp.maSP === action.maSPDoi;
-             });
-             if(spFindDoi){
+            });
+            if (spFindDoi) {
                 //tìm thấy
                 spFindDoi.soLuong += action.soLuong
-             }
+            }
 
-            
+
             return [...state];
         default:
             return state;
