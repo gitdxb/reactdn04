@@ -94,6 +94,34 @@ class FormDangKy extends Component {
         }
         this.props.dispatch(action)
     }
+
+      static getDerivedStateFromProps(newProps, currentState) {
+
+    //Trường hợp chỉnh sửa gõ trên form thì cần đổi state của component => lấy this.state
+
+    //Trường hợp xem thông tin thì lên redux lấy nguoiDungChiTiet về luuw vào props
+    //=> đem từ props lưu và state
+    console.log("newProps",newProps);
+    console.log("currentState",currentState);
+    if(newProps.nguoiDungChiTiet.taiKhoan !== currentState.values.taiKhoan){
+        //?cần xem thông tin chi tiết
+        //return state mới
+
+        return {
+            ...currentState,
+            values:newProps.nguoiDungChiTiet //lấy nguoiDungChiTiet lưu vào state
+        }
+    }
+
+    //? ngược lại, cập nhật người dùng
+    return currentState;// lấy dữ liệu từ form onChange lưu vào state (inputChange)
+  }
+  componentWillReceiveProps(newProps){
+    // chỉ chạy khi props thay đổi => xem chi tiết
+    this.setState({
+        values: newProps.nguoiDungChiTiet
+    })
+  }
     render() {
         console.log(this.props);
         let {taiKhoan, hoTen} = this.props.nguoiDungChiTiet;
